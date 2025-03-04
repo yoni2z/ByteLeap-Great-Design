@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework', #
 ]
 
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', #
     'django.middleware.common.CommonMiddleware', #
@@ -53,6 +54,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Allow your frontend
 ]
 
 ROOT_URLCONF = 'Great.urls'
