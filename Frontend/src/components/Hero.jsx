@@ -73,11 +73,21 @@ const Hero = () => {
                 </span>
               </h1>
 
-              <motion.div className="flex justify-center space-x-4">
+              {/* Animated Buttons */}
+              <motion.div
+                className="flex justify-center space-x-4"
+                initial={{ opacity: 0, y: 50 }} // Start from below
+                animate={{ opacity: 1, y: 0 }} // Move up to final position
+                exit={{ opacity: 0, y: 50 }} // Exit to bottom
+                transition={{ duration: 0.8 }}
+              >
                 <button className="px-6 py-3 bg-[#3d6c26] text-white rounded-full hover:bg-[#6a4d1a] transition-all">
                   {t.shopNow}
                 </button>
-                <Link to="/collections" className="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-gray-900 transition-all">
+                <Link
+                  to="/collections"
+                  className="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-gray-900 transition-all"
+                >
                   {t.exploreCollections}
                 </Link>
               </motion.div>
@@ -99,11 +109,21 @@ const Hero = () => {
                 {t.heroDescription}
               </p>
 
-              <motion.div className="flex justify-center space-x-4">
+              {/* Animated Buttons */}
+              <motion.div
+                className="flex justify-center space-x-4"
+                initial={{ opacity: 0, y: 50 }} // Start from below
+                animate={{ opacity: 1, y: 0 }} // Move up to final position
+                exit={{ opacity: 0, y: 50 }} // Exit to bottom
+                transition={{ duration: 0.8 }}
+              >
                 <button className="px-6 py-3 bg-[#3d6c26] text-white rounded-full hover:bg-[#6a4d1a] transition-all">
                   {t.shopNow}
                 </button>
-                <Link to="/collections" className="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-gray-900 transition-all">
+                <Link
+                  to="/collections"
+                  className="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-gray-900 transition-all"
+                >
                   {t.exploreCollections}
                 </Link>
               </motion.div>
