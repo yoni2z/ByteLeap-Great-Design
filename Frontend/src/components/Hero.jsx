@@ -51,9 +51,9 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="flex justify-center space-x-4"
               >
-                {/* <button className="px-6 py-3 bg-[#3d6c26] text-white font-semibold text-lg rounded-full hover:bg-[#6a4d1a] transition-all">
+                <button className="px-6 py-3 bg-[#3d6c26] text-white font-semibold text-lg rounded-full hover:bg-[#6a4d1a] transition-all">
                   Shop Now
-                </button> */}
+                </button>
                 <button className="px-6 py-3 border border-white text-white font-semibold text-lg rounded-full hover:bg-white hover:text-gray-900 transition-all">
                   Explore Collections
                 </button>
@@ -84,9 +84,9 @@ const Hero = () => {
                 transition={{ duration: 0.6, delay: 0.6 }}
                 className="flex justify-center space-x-4"
               >
-                {/* <button className="px-6 py-3 bg-[#3d6c26] text-white font-semibold text-lg rounded-full hover:bg-[#6a4d1a] transition-all">
+                <button className="px-6 py-3 bg-[#3d6c26] text-white font-semibold text-lg rounded-full hover:bg-[#6a4d1a] transition-all">
                   Shop Now
-                </button> */}
+                </button>
                 <button className="px-6 py-3 border border-white text-white font-semibold text-lg rounded-full hover:bg-white hover:text-gray-900 transition-all">
                   Explore Collections
                 </button>
