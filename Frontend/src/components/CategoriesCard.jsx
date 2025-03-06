@@ -54,12 +54,16 @@ const CategoriesCard = ({ category }) => {
               </h2>
               <p className="text-white">{category.description}</p>
               <Link
-                to={`/categories/${category.id}`}
-                onClick={() => setIsModalOpen(false)}
+                to="/products"
+                onClick={() => {
+                  setIsModalOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                }}
                 className="mt-4 mx-6 px-6 py-2 bg-[#6a4d1a] text-white font-semibold rounded-lg"
               >
                 {t.seeBags}
               </Link>
+
               <button
                 onClick={() => setIsModalOpen(false)}
                 className="mt-4 px-6 py-2 bg-[#6a4d1a] text-white font-semibold rounded-lg"
