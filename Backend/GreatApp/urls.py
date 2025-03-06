@@ -3,13 +3,15 @@ from rest_framework.routers import DefaultRouter
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import CategoryViewSet
+from .views import CategoryViewSet, ProductViewSet
 
 router = DefaultRouter()
 router.register('categories', CategoryViewSet, basename='categories')
+router.register("products", ProductViewSet, basename="products")
 
 urlpatterns = [
     path('api/', include(router.urls)),
+    path("api/categories/featured/", CategoryViewSet.as_view({"get": "featured"}), name="featured-categories"),
 ]
 
 if settings.DEBUG:

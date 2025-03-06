@@ -46,7 +46,6 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black opacity-40"></div>
 
       {/* Content */}
-      <LanguageSwitcher />
       <div className="relative z-10 text-center text-white px-6 md:px-12">
         <AnimatePresence mode="wait">
           {showShopName ? (
@@ -81,11 +80,8 @@ const Hero = () => {
                 exit={{ opacity: 0, y: 50 }} // Exit to bottom
                 transition={{ duration: 0.8 }}
               >
-                <button className="px-6 py-3 bg-[#3d6c26] text-white rounded-full hover:bg-[#6a4d1a] transition-all">
-                  {t.shopNow}
-                </button>
                 <Link
-                  to="/collections"
+                  to="/products"
                   className="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-gray-900 transition-all"
                 >
                   {t.exploreCollections}
@@ -117,11 +113,11 @@ const Hero = () => {
                 exit={{ opacity: 0, y: 50 }} // Exit to bottom
                 transition={{ duration: 0.8 }}
               >
-                <button className="px-6 py-3 bg-[#3d6c26] text-white rounded-full hover:bg-[#6a4d1a] transition-all">
-                  {t.shopNow}
-                </button>
                 <Link
-                  to="/collections"
+                  to="/products"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
                   className="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-gray-900 transition-all"
                 >
                   {t.exploreCollections}
