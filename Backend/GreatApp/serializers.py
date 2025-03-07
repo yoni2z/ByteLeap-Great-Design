@@ -11,5 +11,12 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['id', 'category', 'image', 'is_available']  # Include only necessary fields
+        fields = ['id', 'category', 'image', 'is_available']  
+
+class ProductsSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
+
+    class Meta:
+        model = Product
+        fields = "__all__"
 

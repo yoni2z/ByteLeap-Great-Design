@@ -59,13 +59,13 @@ const Hero = () => {
               <h1 className="text-4xl md:text-6xl font-bold mb-4">
                 {t.welcome}{" "}
                 <span
-                  className="text-8xl transition-colors duration-500"
+                  className="text-6xl sm:text-6xl md:text-6xl lg:text-8xl transition-colors duration-500"
                   style={{ color: colors[colorIndex1] }}
                 >
                   Great
                 </span>
                 <span
-                  className="text-8xl transition-colors duration-500"
+                  className="text-6xl sm:text-6xl md:text-6xl lg:text-8xl transition-colors duration-500"
                   style={{ color: colors[colorIndex2] }}
                 >
                   Design
@@ -82,6 +82,9 @@ const Hero = () => {
               >
                 <Link
                   to="/products"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
                   className="px-6 py-3 border border-white text-white rounded-full hover:bg-white hover:text-gray-900 transition-all"
                 >
                   {t.exploreCollections}

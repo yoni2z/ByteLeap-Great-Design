@@ -3,7 +3,9 @@ from django.utils.timezone import now
 
 class Category(models.Model):
     name = models.CharField(max_length=255, unique=True)
+    name_amh = models.CharField(max_length=255, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
+    description_amh = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to="categories/")
     is_featured = models.BooleanField(default=False)
 

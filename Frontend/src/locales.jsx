@@ -48,6 +48,10 @@ const translations = {
     footerFollowUsTitle: "Follow Us",
     footerContactUsTitle: "Contact Us",
     footerAddress: "Ambassador Hotel, Addis Ababa, Ethiopia",
+    home: "Home",
+    products: "Products",
+    aboutUs: "About Us",
+    contacts: "Contacts",
   },
   am: {
     welcome: "እንኳን ደህና መጡ ወደ",
@@ -90,14 +94,18 @@ const translations = {
     moreProductsButton: "ተጨማሪ ምርቶች",
     footerBrandInfoTitle: "ግሬት ዲዛይንስ",
     footerBrandInfoDescription:
-      "ባህላዊ ኢትዮጵያ እባብ ቦርሳ በሚያሳይ እና ዘመናዊ ዲዛይን እንደምን እንጠቀም በሚሆን ተስፋ ያለው ምርቶችን እንጠቀማለን።",
+      "ውብ ቦርሳዎችን ከታሪክ ጋር እንሰናዳለን, ባህላዊ የኢትዮጵያ ቁሳቁሶች እና ዘመናዊ ዲዛይን በማቀናጀት ልዩ እና ዘላቂ የሆኑ እቃዎችን እናቀርብሎታለን።",
     footerQuickLinksTitle: "ፈጣን ገጽታዎች",
     footerHomeLink: "ሆም",
     footerAboutUsLink: "ስለ እኛ",
     footerProductsLink: "ምርቶች",
     footerFollowUsTitle: "እኛን ተከተሉን",
-    footerContactUsTitle: "እኛን እንደ ተመክሮ ስለምን እታክም",
+    footerContactUsTitle: "እኛን ለማግኘት",
     footerAddress: "አምባሳደር ሆቴል, አዲስ አበባ, ኢትዮጵያ",
+    home: "ሆም",
+    products: "ምርቶች",
+    aboutUs: "ስለ እኛ",
+    contacts: "አድራሻ",
   },
 };
 

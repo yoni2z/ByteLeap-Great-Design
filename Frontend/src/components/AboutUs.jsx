@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; // Import Link
 import { FaLeaf, FaHandPaper, FaStar, FaHeart } from "react-icons/fa"; // React Icons
 import { useLanguage } from "../context/LanguageContext"; // Import language context
 import translations from "../locales"; // Import translations
@@ -26,12 +27,14 @@ const AboutUsSection = () => {
             </p>
 
             {/* Call-to-Action Button */}
-            <button
+            <Link
+              to="/products"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="bg-[#3d6c26] text-white px-8 py-3 rounded-full font-semibold 
       hover:bg-[#124c5f] hover:scale-105 transition-all duration-300 shadow-lg"
             >
               {t.exploreBags}
-            </button>
+            </Link>
           </div>
         </div>
 

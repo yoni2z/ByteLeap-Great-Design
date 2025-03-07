@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa"; // For the hamburger menu
+import { motion, AnimatePresence } from "framer-motion"; // For animations
 import logo from "../assets/greatdesigns.png"; // Import logo image
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "../context/LanguageContext"; // Import language context
+import translations from "../locales"; // Import translations
 
 const Navbar = () => {
+  const { language } = useLanguage(); // Get current language
+  const t = translations[language]; // Get translations for current language
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -22,18 +27,8 @@ const Navbar = () => {
 
   const navigate = useNavigate();
 
-  const handleNavigateToAboutUs = () => {
-    navigate("/#about-us"); // Navigate to the Home page and add the hash to scroll to the section
-    setTimeout(() => {
-      window.scrollTo({
-        top: document.getElementById("about-us").offsetTop,
-        behavior: "smooth",
-      });
-    }, 100); // Delay to allow the page to load before scrolling
-  };
-
   const handleNavigateToFooter = () => {
-    navigate("/#about-us"); // Navigate to the Home page and add the hash to scroll to the section
+    navigate("/#footer"); // Navigate to the Home page and add the hash to scroll to the section
     setTimeout(() => {
       window.scrollTo({
         top: document.getElementById("footer").offsetTop,
@@ -56,7 +51,10 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo with Image */}
         <div className="text-white text-2xl font-bold flex items-center space-x-3">
-          <Link to="/">
+          <Link
+            to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          >
             <img
               src={logo}
               alt="Brand Logo"
@@ -75,7 +73,7 @@ const Navbar = () => {
               isScrolled ? "bg-[#3d6c26] px-3 py-2 rounded" : ""
             }`}
           >
-            Home
+            {t.home}
           </Link>
           <Link
             to="/products"
@@ -84,16 +82,7 @@ const Navbar = () => {
               isScrolled ? "bg-[#3d6c26] px-3 py-2 rounded" : ""
             }`}
           >
-            Products
-          </Link>
-          <Link
-            to="#about-us"
-            onClick={handleNavigateToAboutUs}
-            className={`text-white hover:text-[#F5F6F8] hover:underline transition-all duration-300 ${
-              isScrolled ? "bg-[#3d6c26] px-3 py-2 rounded" : ""
-            }`}
-          >
-            About Us
+            {t.products}
           </Link>
           <Link
             to="#footer"
@@ -102,7 +91,7 @@ const Navbar = () => {
               isScrolled ? "bg-[#3d6c26] px-3 py-2 rounded" : ""
             }`}
           >
-            Contact
+            {t.contacts}
           </Link>
           <LanguageSwitcher />
         </div>
@@ -111,49 +100,68 @@ const Navbar = () => {
         <div className="md:hidden">
           <button
             onClick={handleMenuToggle}
-            className="text-white text-3xl hover:text-[#F5F6F8] transition-all duration-300"
+            className="text-[#3d6c26] text-3xl hover:text-[#F5F6F8] transition-all duration-300"
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`${
-          isMenuOpen ? "block" : "hidden"
-        } md:hidden bg-[#6a4d1a] p-4 space-y-4 text-center transition-all duration-300 ease-in-out`}
-      >
-        <Link
-          to="/"
-          className="text-white hover:text-[#F5F6F8] hover:underline transition-all duration-300"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Home
-        </Link>
-        <Link
-          to="/products"
-          className="text-white hover:text-[#F5F6F8] hover:underline transition-all duration-300"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Products
-        </Link>
-        <Link
-          to="#about-us"
-          className="text-white hover:text-[#F5F6F8] hover:underline transition-all duration-300"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          About Us
-        </Link>
-        <Link
-          to="#contact"
-          className="text-white hover:text-[#F5F6F8] hover:underline transition-all duration-300"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Contact
-        </Link>
-        <LanguageSwitcher />
-      </div>
+      {/* Mobile Menu with Framer Motion */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ x: "100%" }} // Start off-screen to the right
+            animate={{ x: 0 }} // Slide in to cover half the page
+            exit={{ x: "100%" }} // Slide out to the right
+            transition={{ duration: 0.3, ease: "easeInOut" }} // Smooth transition
+            className="fixed top-0 right-0 h-full w-1/2 bg-[#3d6c26] p-4 shadow-lg z-40"
+          >
+            {/* Close Button */}
+            <button
+              onClick={handleMenuToggle}
+              className="text-white text-3xl absolute top-4 right-4"
+            >
+              <FaTimes />
+            </button>
+
+            {/* Menu Links */}
+            <div className="flex flex-col space-y-6 mt-16">
+              <Link
+                to="/"
+                className="text-white hover:text-[#F5F6F8] hover:underline transition-all duration-300"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                Home
+              </Link>
+              <Link
+                to="/products"
+                className="text-white hover:text-[#F5F6F8] hover:underline transition-all duration-300"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+              >
+                Products
+              </Link>
+              <Link
+                to="#footer"
+                className="text-white hover:text-[#F5F6F8] hover:underline transition-all duration-300"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  handleNavigateToFooter();
+                }}
+              >
+                Contact
+              </Link>
+              <LanguageSwitcher />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
