@@ -47,7 +47,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="bg-transparent p-4 fixed w-full top-0 z-50 transition-all duration-300 ease-in-out">
+    <nav className="bg-transparent p-4 fixed w-full top-0 z-50 transition-all duration-300 ease-in-out font-JosefinSans">
       <div className="container mx-auto flex items-center justify-between">
         {/* Logo with Image */}
         <div className="text-white text-2xl font-bold flex items-center space-x-3">
