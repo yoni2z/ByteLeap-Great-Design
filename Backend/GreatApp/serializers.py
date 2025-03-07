@@ -7,8 +7,9 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = CategorySerializer()
+    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())  # Accepts only the category ID
 
     class Meta:
         model = Product
-        fields = "__all__"
+        fields = ['id', 'category', 'image', 'is_available']  # Include only necessary fields
+

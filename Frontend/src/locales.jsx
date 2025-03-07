@@ -47,9 +47,7 @@ const translations = {
     footerProductsLink: "Products",
     footerFollowUsTitle: "Follow Us",
     footerContactUsTitle: "Contact Us",
-    footerAddress: "123 Foundation Street, City, Country",
-    footerPhone: "+1 (234) 567-890",
-    footerEmail: "info@greatdesigns.com",
+    footerAddress: "Ambassador Hotel, Addis Ababa, Ethiopia",
   },
   am: {
     welcome: "እንኳን ደህና መጡ ወደ",
@@ -99,7 +97,7 @@ const translations = {
     footerProductsLink: "ምርቶች",
     footerFollowUsTitle: "እኛን ተከተሉን",
     footerContactUsTitle: "እኛን እንደ ተመክሮ ስለምን እታክም",
-    footerAddress: "123 እባብ ስተልት ስተሌት, የሆነበት ስም ሰብስ",
+    footerAddress: "አምባሳደር ሆቴል, አዲስ አበባ, ኢትዮጵያ",
   },
 };
 
