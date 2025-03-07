@@ -58,15 +58,15 @@ const ProductsPage = () => {
         {t.explore}
       </h1>
 
-      <div className="container mx-auto p-6 flex gap-8">
+      <div className="container mx-auto p-6 flex flex-col lg:flex-row gap-8">
         {/* Sidebar: Category Filter */}
-        <div className="w-1/4 bg-white p-4 shadow-lg rounded-lg">
+        <div className="w-full lg:w-1/4 bg-white p-4 shadow-lg rounded-lg">
           <h2 className="text-xl font-semibold text-gray-800 mb-4">
             {t.categories}
           </h2>
 
           {/* Category List */}
-          <ul className="space-y-2 overflow-y-auto h-[400px]">
+          <ul className="space-y-2 overflow-y-auto max-h-[400px]">
             <li
               className={`p-3 rounded-md cursor-pointer transition-all duration-300 ${
                 selectedCategory === ""
@@ -77,24 +77,30 @@ const ProductsPage = () => {
             >
               {t.allCategories}
             </li>
-            {categories.map((category) => (
-              <li
-                key={category.id}
-                className={`p-3 rounded-md cursor-pointer transition-all duration-300 ${
-                  selectedCategory === category.id
-                    ? "bg-[#124c5f] text-white"
-                    : "bg-gray-100 hover:bg-[#3d6c26]"
-                }`}
-                onClick={() => handleCategoryChange(category.id)}
-              >
-                {category.name}
-              </li>
-            ))}
+            {categories.map((category) => {
+              // Determine which category name to display based on the selected language
+              const categoryName =
+                language === "am" ? category.name_amh : category.name;
+
+              return (
+                <li
+                  key={category.id}
+                  className={`p-3 rounded-md cursor-pointer transition-all duration-300 ${
+                    selectedCategory === category.id
+                      ? "bg-[#124c5f] text-white"
+                      : "bg-gray-100 hover:bg-[#3d6c26]"
+                  }`}
+                  onClick={() => handleCategoryChange(category.id)}
+                >
+                  {categoryName} {/* Use the translated category name */}
+                </li>
+              );
+            })}
           </ul>
         </div>
 
         {/* Product Display Grid */}
-        <div className="w-3/4">
+        <div className="w-full lg:w-3/4">
           {/* Loading State */}
           {loading && (
             <div className="text-center text-lg text-gray-600">
@@ -103,7 +109,7 @@ const ProductsPage = () => {
           )}
 
           {/* Product Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {products.map((product) => (
               <motion.div
                 key={product.id}

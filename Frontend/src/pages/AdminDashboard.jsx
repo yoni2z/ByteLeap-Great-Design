@@ -3,9 +3,17 @@ import axios from "axios";
 import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 
 const AdminDashboard = () => {
+  const [successMessage, setSuccessMessage] = useState("");
+  const [categoryMessage, setCategoryMessage] = useState("");
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
-  const [newCategory, setNewCategory] = useState({ name: "", description: "" });
+  const [newCategory, setNewCategory] = useState({
+    name: "", // English name
+    name_amh: "", // Amharic name
+    description: "", // English description
+    description_amh: "", // Amharic description
+    image: null, // Category image
+  });
   const [newProduct, setNewProduct] = useState({
     category: "",
     image: null,
@@ -43,14 +51,16 @@ const AdminDashboard = () => {
 
   // Add New Category
   const addCategory = async () => {
-    if (!newCategory.name.trim()) {
-      setErrorMessage("Category name is required.");
+    if (!newCategory.name.trim() || !newCategory.name_amh.trim()) {
+      setErrorMessage("Category name in both English and Amharic is required.");
       return;
     }
 
     const formData = new FormData();
-    formData.append("name", newCategory.name);
-    formData.append("description", newCategory.description || "");
+    formData.append("name", newCategory.name); // English name
+    formData.append("name_amh", newCategory.name_amh); // Amharic name
+    formData.append("description", newCategory.description || ""); // English description
+    formData.append("description_amh", newCategory.description_amh || ""); // Amharic description
 
     // If an image is selected, append it; otherwise, send an empty string
     if (newCategory.image) {
@@ -65,11 +75,21 @@ const AdminDashboard = () => {
       });
 
       fetchCategories();
-      setNewCategory({ name: "", description: "", image: null });
+      setCategoryMessage("Category added successfully!");
+      setTimeout(() => setCategoryMessage(""), 3000);
+      setNewCategory({
+        name: "",
+        name_amh: "",
+        description: "",
+        description_amh: "",
+        image: null,
+      });
       setErrorMessage(""); // Clear errors
     } catch (error) {
       console.error("Error adding category:", error.response?.data || error);
       setErrorMessage("Failed to add category. Please check the input.");
+      setCategoryMessage("Error adding category. Please try again.");
+      setTimeout(() => setCategoryMessage(""), 3000); // Hide after 3 seconds
     }
   };
 
@@ -111,11 +131,20 @@ const AdminDashboard = () => {
         }
       );
 
-      console.log("Product added:", response.data);
       fetchProducts(); // Refresh product list after adding new product
+      setSuccessMessage("Product added successfully!");
+      setTimeout(() => setSuccessMessage(""), 3000); // Hide after 3 seconds
+
+      setNewProduct({
+        category: "",
+        image: null,
+        is_available: false,
+      });
     } catch (error) {
       console.error("Error adding product:", error.response?.data || error);
       setErrorMessage("Failed to add product.");
+      setSuccessMessage("Error adding product. Please try again.");
+      setTimeout(() => setSuccessMessage(""), 3000); // Hide after 3 seconds
     }
   };
 
@@ -142,25 +171,57 @@ const AdminDashboard = () => {
       {/* CATEGORY MANAGEMENT */}
       <div className="mb-6">
         <h2 className="text-2xl font-semibold mb-2">Manage Categories</h2>
-        <div className="flex gap-2 mb-4">
+        {/* Success Message */}
+        {categoryMessage && (
+          <div className="bg-green-100 text-green-700 p-3 mb-4 rounded-lg text-center">
+            {categoryMessage}
+          </div>
+        )}
+        <div className="flex flex-col gap-4 mb-4">
+          {/* English Name */}
           <input
             type="text"
-            placeholder="Category Name"
+            placeholder="Category Name (English)"
             value={newCategory.name}
             onChange={(e) =>
               setNewCategory({ ...newCategory, name: e.target.value })
             }
             className="border p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
+          {/* Amharic Name */}
           <input
             type="text"
-            placeholder="Description"
+            placeholder="Category Name (Amharic)"
+            value={newCategory.name_amh}
+            onChange={(e) =>
+              setNewCategory({ ...newCategory, name_amh: e.target.value })
+            }
+            className="border p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          {/* English Description */}
+          <input
+            type="text"
+            placeholder="Description (English)"
             value={newCategory.description}
             onChange={(e) =>
               setNewCategory({ ...newCategory, description: e.target.value })
             }
             className="border p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
+          {/* Amharic Description */}
+          <input
+            type="text"
+            placeholder="Description (Amharic)"
+            value={newCategory.description_amh}
+            onChange={(e) =>
+              setNewCategory({
+                ...newCategory,
+                description_amh: e.target.value,
+              })
+            }
+            className="border p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          {/* Image Upload */}
           <input
             type="file"
             onChange={(e) =>
@@ -168,14 +229,16 @@ const AdminDashboard = () => {
             }
             className="border p-3 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
+          {/* Add Category Button */}
           <button
             onClick={addCategory}
-            className="bg-blue-500 text-white p-3 rounded-lg flex items-center space-x-2"
+            className="bg-blue-500 text-white p-3 rounded-lg flex items-center justify-center space-x-2"
           >
-            <FaPlus /> <span>Add</span>
+            <FaPlus /> <span>Add Category</span>
           </button>
         </div>
 
+        {/* Display Categories */}
         <ul className="mt-4">
           {categories.map((category) => (
             <li
@@ -190,7 +253,12 @@ const AdminDashboard = () => {
                     className="w-12 h-12 rounded-full object-cover"
                   />
                 )}
-                <span>{category.name}</span>
+                <div>
+                  <span className="block font-semibold">{category.name}</span>
+                  <span className="block text-sm text-gray-600">
+                    {category.name_amh}
+                  </span>
+                </div>
               </div>
               <button
                 onClick={() => deleteCategory(category.id)}
@@ -206,7 +274,14 @@ const AdminDashboard = () => {
       {/* PRODUCT MANAGEMENT */}
       <div>
         <h2 className="text-2xl font-semibold mb-2">Manage Products</h2>
-        <div className="flex gap-2 mb-4">
+        {/* Success Message */}
+        {successMessage && (
+          <div className="bg-green-100 text-green-700 p-3 mb-4 rounded-lg text-center">
+            {successMessage}
+          </div>
+        )}
+
+        <div className="flex flex-col md:flex-row gap-4 mb-4">
           <select
             value={newProduct.category}
             onChange={(e) =>
@@ -242,13 +317,13 @@ const AdminDashboard = () => {
           </label>
           <button
             onClick={addProduct}
-            className="bg-blue-500 text-white p-3 rounded-lg flex items-center space-x-2"
+            className="bg-blue-500 text-white p-3 rounded-lg flex items-center justify-center space-x-2"
           >
             <FaPlus /> <span>Add</span>
           </button>
         </div>
 
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
             <div
               key={product.id}

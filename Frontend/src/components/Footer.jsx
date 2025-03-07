@@ -7,17 +7,6 @@ import translations from "../locales"; // Import translations
 const Footer = () => {
   const { language } = useLanguage(); // Get current language
   const t = translations[language]; // Get translations for current language
-  const navigate = useNavigate();
-
-  const handleNavigateToAboutUs = () => {
-    navigate("/#about-us"); // Navigate to the Home page and add the hash to scroll to the section
-    setTimeout(() => {
-      window.scrollTo({
-        top: document.getElementById("about-us").offsetTop,
-        behavior: "smooth",
-      });
-    }, 100); // Delay to allow the page to load before scrolling
-  };
 
   return (
     <footer
@@ -52,15 +41,6 @@ const Footer = () => {
                   }
                 >
                   {t.footerHomeLink}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="#about-us"
-                  className="hover:text-[#F5F6F8] hover:underline transition duration-300"
-                  onClick={handleNavigateToAboutUs}
-                >
-                  {t.footerAboutUsLink}
                 </Link>
               </li>
               <li>

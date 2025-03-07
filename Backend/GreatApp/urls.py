@@ -3,11 +3,12 @@ from rest_framework.routers import DefaultRouter
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import CategoryViewSet, ProductViewSet
+from .views import CategoryViewSet, ProductViewSet, ProductsViewSet
 
 router = DefaultRouter()
 router.register('categories', CategoryViewSet, basename='categories')
 router.register("products", ProductViewSet, basename="products")
+router.register("product-list", ProductsViewSet, basename="product-list")
 
 urlpatterns = [
     path('api/', include(router.urls)),
