@@ -9,7 +9,7 @@ const RecentProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/api/products") // Adjust API URL
+    fetch("http://127.0.0.1:8000/api/product-list") // Adjust API URL
       .then((res) => res.json())
       .then((data) => {
         // Sort products by latest `created_at` date (newest first)
@@ -35,26 +35,34 @@ const RecentProducts = () => {
         {/* Product Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           {products.length > 0 ? (
-            products.slice(0, 8).map((product) => (
-              <div
-                key={product.id}
-                className="relative bg-white shadow-md rounded-lg overflow-hidden group hover:shadow-xl transition duration-300"
-              >
-                {/* Product Image */}
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-64 object-cover group-hover:brightness-75 transition duration-300"
-                />
+            products.slice(0, 8).map((product) => {
+              // Determine which category name to display based on the selected language
+              const categoryName =
+                language === "am"
+                  ? product.category.name_amh
+                  : product.category.name;
 
-                {/* Hover Effect - Show Product Name & Price */}
-                <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 flex flex-col justify-center items-center transition duration-300">
-                  <h3 className="text-lg font-semibold text-white">
-                    {product.category.name}
-                  </h3>
+              return (
+                <div
+                  key={product.id}
+                  className="relative bg-white shadow-md rounded-lg overflow-hidden group hover:shadow-xl transition duration-300"
+                >
+                  {/* Product Image */}
+                  <img
+                    src={product.image}
+                    alt={categoryName} // Use the translated category name for alt text
+                    className="w-full h-64 object-cover group-hover:brightness-75 transition duration-300"
+                  />
+
+                  {/* Hover Effect - Show Product Name & Price */}
+                  <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-40 flex flex-col justify-center items-center transition duration-300">
+                    <h3 className="text-lg font-semibold text-white">
+                      {categoryName} {/* Use the translated category name */}
+                    </h3>
+                  </div>
                 </div>
-              </div>
-            ))
+              );
+            })
           ) : (
             <p className="text-gray-500 col-span-4">{t.noProductsMessage}</p>
           )}

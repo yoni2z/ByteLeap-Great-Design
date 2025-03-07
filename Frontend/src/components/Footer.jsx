@@ -7,17 +7,6 @@ import translations from "../locales"; // Import translations
 const Footer = () => {
   const { language } = useLanguage(); // Get current language
   const t = translations[language]; // Get translations for current language
-  const navigate = useNavigate();
-
-  const handleNavigateToAboutUs = () => {
-    navigate("/#about-us"); // Navigate to the Home page and add the hash to scroll to the section
-    setTimeout(() => {
-      window.scrollTo({
-        top: document.getElementById("about-us").offsetTop,
-        behavior: "smooth",
-      });
-    }, 100); // Delay to allow the page to load before scrolling
-  };
 
   return (
     <footer
@@ -56,15 +45,6 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="#about-us"
-                  className="hover:text-[#F5F6F8] hover:underline transition duration-300"
-                  onClick={handleNavigateToAboutUs}
-                >
-                  {t.footerAboutUsLink}
-                </Link>
-              </li>
-              <li>
-                <Link
                   to="/products"
                   className="hover:text-[#F5F6F8] hover:underline transition duration-300"
                   onClick={() =>
@@ -84,32 +64,18 @@ const Footer = () => {
             </h3>
             <div className="flex flex-col space-y-6">
               <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaFacebookF className="text-2xl hover:text-[#F5F6F8] transition-all duration-300 transform hover:scale-125" />
-              </a>
-              <a
-                href="https://twitter.com"
+                href="https://www.tiktok.com/@great.design.et?_t=ZM-8uTjLKzfcSF&_r=1"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaTiktok className="text-2xl hover:text-[#F5F6F8] transition-all duration-300 transform hover:scale-125" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/great.design.et?utm_source=qr&igsh=MXQ3NmllcWo5aTQ4NQ=="
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaInstagram className="text-2xl hover:text-[#F5F6F8] transition-all duration-300 transform hover:scale-125" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaTelegram className="text-2xl hover:text-[#F5F6F8] transition-all duration-300 transform hover:scale-125" />
               </a>
             </div>
           </div>
@@ -128,15 +94,8 @@ const Footer = () => {
               {/* Phone */}
               <li className="flex items-center">
                 <span className="mr-2">📞</span>
-                <a href="tel:+123456789" className="hover:underline">
-                  +1 (234) 567-890
-                </a>
-              </li>
-              {/* Email */}
-              <li className="flex items-center">
-                <span className="mr-2">✉️</span>
-                <a href="mailto:info@ourbrand.com" className="hover:underline">
-                  info@greatdesigns.com
+                <a href="tel:+251940115697" className="hover:underline">
+                  +251940115697
                 </a>
               </li>
             </ul>
@@ -149,7 +108,8 @@ const Footer = () => {
         {/* Footer Bottom Section */}
         <div className="text-center">
           <p className="text-lg text-[#F5F6F8] opacity-70">
-            &copy; {new Date().getFullYear()} Great Designs. All Rights Reserved.
+            &copy; {new Date().getFullYear()} Great Designs. All Rights
+            Reserved.
           </p>
         </div>
       </div>

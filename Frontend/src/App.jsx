@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import ProductsPage from './pages/ProductsPage';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import AdminDashboard from './pages/AdminDashboard';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductsPage />} />
+        <Route path='/greatdesigns' element={<AdminDashboard />} />
       </Routes>
       <Footer />
     </Router>
