@@ -117,10 +117,10 @@ const Navbar = () => {
             transition={{ duration: 0.3, ease: "easeInOut" }} // Smooth transition
             className="fixed top-0 right-0 h-full w-1/2 bg-[#3d6c26] p-4 shadow-lg z-40"
           >
-            {/* Close Button */}
+            {/* Close Button (X) */}
             <button
               onClick={handleMenuToggle}
-              className="text-white text-3xl absolute top-4 right-4"
+              className="text-white text-3xl absolute top-4 left-4 hover:text-[#F5F6F8] transition-all duration-300"
             >
               <FaTimes />
             </button>
