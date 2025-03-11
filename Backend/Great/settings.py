@@ -60,6 +60,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Allow your frontend
 ]
 
+CORS_ALLOW_CREDENTIALS = True
+
 ROOT_URLCONF = 'Great.urls'
 
 TEMPLATES = [

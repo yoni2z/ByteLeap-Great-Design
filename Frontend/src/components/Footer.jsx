@@ -67,15 +67,19 @@ const Footer = () => {
                 href="https://www.tiktok.com/@great.design.et?_t=ZM-8uTjLKzfcSF&_r=1"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center"
               >
-                <FaTiktok className="text-2xl hover:text-[#F5F6F8] transition-all duration-300 transform hover:scale-125" />
+                <FaTiktok className="text-2xl hover:text-[#F5F6F8] transition-all duration-300 transform hover:scale-125 mr-3" />
+                {t.tiktok}
               </a>
               <a
                 href="https://www.instagram.com/great.design.et?utm_source=qr&igsh=MXQ3NmllcWo5aTQ4NQ=="
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center"
               >
-                <FaInstagram className="text-2xl hover:text-[#F5F6F8] transition-all duration-300 transform hover:scale-125" />
+                <FaInstagram className="text-2xl hover:text-[#F5F6F8] transition-all duration-300 transform hover:scale-125 mr-3" />
+                {t.instagram}
               </a>
             </div>
           </div>

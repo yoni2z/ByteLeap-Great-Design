@@ -52,7 +52,7 @@ const ProductsPage = () => {
   };
 
   return (
-    <div className="container mx-auto p-6 font-JosefinSans">
+    <div className="py-30 container mx-auto p-6 font-JosefinSans">
       {/* Page Title */}
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-6">
         {t.explore}
