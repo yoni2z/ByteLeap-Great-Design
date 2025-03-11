@@ -1,12 +1,21 @@
-import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import ProductsPage from './pages/ProductsPage';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
-import AdminDashboard from './pages/AdminDashboard';
+import { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Home from "./pages/Home";
+import ProductsPage from "./pages/ProductsPage";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar";
+import AdminDashboard from "./pages/AdminDashboard";
+import Login from "./pages/Login";
+import DesingedBy from "./components/DesignedBy";
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isStaff, setIsStaff] = useState(false);
 
   return (
     <Router>
@@ -14,11 +23,30 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<ProductsPage />} />
-        <Route path='/greatdesigns' element={<AdminDashboard />} />
+        <Route
+          path="/login"
+          element={
+            <Login
+              setIsAuthenticated={setIsAuthenticated}
+              setIsStaff={setIsStaff}
+            />
+          }
+        />
+        <Route
+          path="/greatdesigns"
+          element={
+            isAuthenticated && isStaff ? (
+              <AdminDashboard />
+            ) : (
+              <Navigate to="/login" />
+            )
+          }
+        />
       </Routes>
       <Footer />
+      <DesingedBy />
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

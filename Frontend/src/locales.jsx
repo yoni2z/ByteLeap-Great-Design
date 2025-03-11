@@ -6,7 +6,7 @@ const translations = {
     headline: "Elevate Your Style with",
     luxuryBags: "Luxury Bags",
     heroDescription:
-      "Discover high-quality handbags, backpacks, and accessories. Shop the latest trends today!",
+      "Discover premium handbags that blend timeless Ethiopian craftsmanship with modern elegance. Elevate your style today!",
     featured: "Featured Collections",
     readMore: "Read More",
     seeBags: "See Bags",
@@ -46,6 +46,8 @@ const translations = {
     footerAboutUsLink: "About Us",
     footerProductsLink: "Products",
     footerFollowUsTitle: "Follow Us",
+    tiktok: "TikTok",
+    instagram: "Instagram",
     footerContactUsTitle: "Contact Us",
     footerAddress: "Ambassador Hotel, Addis Ababa, Ethiopia",
     home: "Home",
@@ -58,9 +60,9 @@ const translations = {
     shopNow: "ዛሬ ይግዙ",
     exploreCollections: "ስብስቦችን ያስሱ",
     headline: "የእርስዎን ዘይቤ ያሳድጉ በ",
-    luxuryBags: "ግሬት ቦርሳዎች",
+    luxuryBags: "ግሬት ዲዛይን",
     heroDescription:
-      "የተሻለ ጥራት ያላቸውን ቦርሳዎች፣ የተከለለ ሳንባቶችና አካሄድ ዕቃዎች ያግኙ። የአዲስ ዘዴዎችን ዛሬ ይግዙ!",
+      "የኢትዮጵያን ባህላዊ የእጅ ሙያ ከዘመናዊ ውበት ጋር ያዋሃዱ ከፍተኛ ጥራት ያላቸውን የእጅ ቦርሳዎች ያግኙ። ዘይቤዎን ዛሬ ያሻሽሉ!",
     featured: "ተዛማጅ ስብስቦች",
     readMore: "ተጨማሪ እይ",
     seeBags: "ቦርሳዎችን ይመልከቱ",
@@ -70,7 +72,7 @@ const translations = {
     allCategories: "ሁሉንም ምድቦች",
     ourStory: "ስለ እኛ",
     storyDescription:
-      "በእኛ የባህል ምርት ማእከል ውስጥ የኢትዮጵያን ባህላዊ ቁሳቁስ እና ዘመናዊ ዲዛይን በአንድነት የምናቀፍበት የቆየ ቅርሶችን እንዳሳይ አንቀጽን። በዚህም መሰረት፣ የእኛ ቦርሳዎች የባህላዊ ቁሳቁስን እና ዘመናዊነትን በአንድነት ለማሳየት በትኩረት የተሰሩ ናቸው። ቦርሳያችን የባህልን ውበት፣ የሥራ ጥበብ እና የምርት ጥራት ይወክላል። “ቴለት” ባህላዊ ጨርቅ ሆነ “ከፋይ” የሚታወቀውን ጥንድነት የያዘ ሥራ ይዞ ዘመናዊ ዲዛይንን የሚያቀርቡ እና የኢትዮጵያን ባህል የሚያከብሩ ቦርሳዎችን እንምረጣለን።",
+      "በእኛ ምርት ልዩ መለያ የሚገለጸው በኢትዮጵያ ባለሀብታም ባህላዊ ቅርስ ላይ ያለው ጥልቀት ያለው አክብሮት ነው። እኛ ቦርሳዎች በትኩረት የሚሠሩ ውይም የኢትዮጵያን ባህላዊ ቁሳቁሶች ከዘመናዊ ዲዛይን ጋር በማዋሃድ ልዩ እና ትርጉም ያለው መለዋወጫ ይፈጥራሉ። እያንዳንዱ ቦርሳ ታሪክ ይናገራል — የብልህነት፣ የሥራ ክንድ እና የኢትዮጵያ ባህል ውበት ታሪክ። የ'ጥለት' ጨርቅ እውነተኝነት ወይም የ'ከፋይ' ዘላቂነት ቢሆንም፣ እኛ ቦርሳዎች የኢትዮጵያን ባህል ዋና መሰረት በማንፀባረቅ ዘመናዊ ዘይቤን ያንፀባርቃሉ።",
     exploreBags: "ቦርሳዎቻችንን ይዩ",
     ourMissionValues: "የእኛ ተልዕኮ እና እሴቶቻችን",
     missionDescription:
@@ -100,6 +102,8 @@ const translations = {
     footerAboutUsLink: "ስለ እኛ",
     footerProductsLink: "ምርቶች",
     footerFollowUsTitle: "እኛን ተከተሉን",
+    tiktok: "ቲክ ቶክ",
+    instagram: "ኢንስታግራም",
     footerContactUsTitle: "እኛን ለማግኘት",
     footerAddress: "አምባሳደር ሆቴል, አዲስ አበባ, ኢትዮጵያ",
     home: "ሆም",
